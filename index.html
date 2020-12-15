@@ -13,7 +13,7 @@
             --accent-color: rgb(74, 202, 238);
             --subtle-color: #666366;
             --bg-color: #ffffff;
-            --gradient: linear-gradient(var(--main-color), rgb(123, 76, 183), rgb(119, 120, 201), rgb(106, 161, 220), var(--accent-color));
+            --gradient: linear-gradient(135deg, var(--main-color), rgb(123, 76, 183), rgb(119, 120, 201), rgb(106, 161, 220), var(--accent-color));
             --soft-shadow:
                 0 0px 2.1px rgb(50, 22, 104, 0.02),
                 0 0px 5.1px rgb(50, 22, 104, 0.028),
@@ -93,7 +93,7 @@
             width: fit-content;
             font-weight: bold;
             color: var(--accent-color);
-            animation: name 4s ease infinite;
+            animation: name 6s ease infinite;
             background: var(--gradient);
             background-size: 200% 200%;
             text-shadow: none;
@@ -104,15 +104,23 @@
 
         @keyframes name {
             0% {
-                background-position: 51% 0%;
+                background-position: 0% 0%;
+            }
+
+            25% {
+                background-position: 0% 100%;
             }
 
             50% {
                 background-position: 50% 100%;
             }
 
+            75% {
+                background-position: 50% 0%;
+            }
+
             100% {
-                background-position: 51% 0%;
+                background-position: 0% 0%;
             }
         }
 
@@ -128,9 +136,9 @@
             color: var(--subtle-color);
             text-align: start;
             max-width: 75%;
-            padding: 1rem;
+            padding: 0 0 0 1rem;
             margin: 2rem 0 2rem auto;
-            border-left: 1px solid var(--main-color);
+            border-left: .25rem solid var(--main-color);
         }
 
         #contact {
@@ -229,7 +237,7 @@
                 max-width: 1024px;
                 margin: auto;
                 display: grid;
-                grid-template-columns: 1fr 2fr;
+                grid-template-columns: 2fr 3fr;
             }
 
             .intro>article {
@@ -258,7 +266,6 @@
                 grid-column: 2;
             }
         }
-
 
         [x-cloak] {
             display: none;
