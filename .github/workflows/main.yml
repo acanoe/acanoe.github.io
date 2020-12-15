@@ -1,0 +1,19 @@
+name: Convert to PDF
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: markwilson/html2pdf@v1.0
+        with:
+          tmlPath: 'index.html'
+          pdfName: 'resume'
