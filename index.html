@@ -43,6 +43,15 @@
             background: var(--bg-color);
         }
 
+        article dl>div {
+            display: flex;
+        }
+
+        article dl dt {
+            margin-right: auto;
+            color: var(--main-color);
+        }
+
         article .card {
             position: relative;
             box-shadow: var(--soft-shadow);
@@ -69,7 +78,7 @@
         }
 
         article .card-detail>div:first-child {
-            flex: 1;
+            margin-right: auto;
             text-transform: capitalize;
             color: var(--main-color);
         }
@@ -267,6 +276,14 @@
             }
         }
 
+        @media print {
+            section #contact,
+            section #projects {
+                display: none !important;
+                height: 0;
+            }
+        }
+
         [x-cloak] {
             display: none;
         }
@@ -319,6 +336,29 @@
             </article>
         </section>
         <section class="info">
+            <article id="personal information">
+                <div class="details">
+                    <dl>
+                        <div>
+                            <dt>Name and title</dt>
+                            <dd x-text="nameWithTitle"></dd>
+                        </div>
+                        <div>
+                            <dt>Date of birth</dt>
+                            <dd x-text="new Date(dob).toLocaleDateString('en-GB')"></dd>
+                        </div>
+                        <div>
+                            <dt>Age</dt>
+                            <!-- https://stackoverflow.com/a/50827764 -->
+                            <dd x-text="Math.floor((new Date() - new Date(dob).getTime()) / 3.15576e+10)"></dd>
+                        </div>
+                        <div>
+                            <dt>Current residence</dt>
+                            <dd x-text="city"></dd>
+                        </div>
+                    </dl>
+                </div>
+            </article>
             <article id="skills">
                 <div class="details">
                     <template x-for="skill in skills">
@@ -335,18 +375,16 @@
             </article>
             <template x-if="projects.length > 0">
                 <article id="projects">
-                    <div class="content">
-                        <div class="details">
-                            <template x-for="proj in projects">
-                                <div class="card" x-on:click="launchUrl(proj.html_url)">
-                                    <h3>
-                                        <span x-text="proj.name"></span>
-                                        <span x-text="proj.language"></span>
-                                    </h3>
-                                    <p x-text="proj.description"></p>
-                                </div>
-                            </template>
-                        </div>
+                    <div class="details">
+                        <template x-for="proj in projects">
+                            <div class="card" x-on:click="launchUrl(proj.html_url)">
+                                <h3>
+                                    <span x-text="proj.name"></span>
+                                    <span x-text="proj.language"></span>
+                                </h3>
+                                <p x-text="proj.description"></p>
+                            </div>
+                        </template>
                     </div>
                 </article>
             </template>
@@ -385,6 +423,9 @@
         function resume() {
             return {
                 name: 'Hendika Nugroho',
+                nameWithTitle: 'Hendika Nugroho, S.Pd.',
+                dob: '1994-01-27',
+                city: 'Ngawi, East Java, Indonesia',
                 contact: {
                     linkedin: 'hendika-nugroho',
                     github: 'acanoe',
@@ -436,7 +477,7 @@
                     {
                         place: 'HAIPY',
                         role: 'Mobile app developer, 2018 - now',
-                        details: 'I help creating the app for the service using Dart\'s Flutter framework',
+                        details: 'I joined the project with my friend in 2018 as a mobile app developer. I get the opportunity to learn and grow by creating the app for the service using Dart\'s Flutter framework. Dart and Flutter are Google\'s open source projects to build multi-platform apps.',
                     },
                 ],
                 projects: [],
