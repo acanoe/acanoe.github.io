@@ -1,0 +1,59 @@
+{
+    "name": "Hendika Nugroho",
+    "nameWithTitle": "Hendika Nugroho, S.Pd.",
+    "dob": "1994-01-27",
+    "city": "Ngawi, East Java, Indonesia",
+    "contact": {
+        "linkedin": "hendika-nugroho",
+        "github": "acanoe",
+        "email": "hendika.new@gmail.com"
+    },
+    "description": "I am a lifelong learner. With my ability to adapt and innovate, combined with my perfectionism, I have the necessary qualifications to excel.",
+    "skills": [
+        {
+            "category": "Language skills",
+            "items": [
+                "javascript",
+                "dart",
+                "python",
+                "go"
+            ]
+        },
+        {
+            "category": "Framework skills",
+            "items": [
+                "vue",
+                "flutter",
+                "alpine",
+                "react"
+            ]
+        },
+        {
+            "category": "Communication",
+            "items": [
+                "indonesian",
+                "english",
+                "japanese"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "almamater": "STKIP PGRI Ngawi",
+            "major": "English Pedagogy",
+            "year": 2017
+        },
+        {
+            "almamater": "Pelatihan Berbasis Komputer BLK Bekasi",
+            "major": "Graphic Design",
+            "year": 2018
+        }
+    ],
+    "experience": [
+        {
+            "place": "HAIPY",
+            "role": "Mobile app developer, 2018 - 2020",
+            "details": "I joined the project with my friend in 2018 as a mobile app developer. I get the opportunity to learn and grow by creating the app for the service using Dart's Flutter framework. Dart and Flutter are Google's open source projects to build multi-platform apps."
+        }
+    ]
+}
