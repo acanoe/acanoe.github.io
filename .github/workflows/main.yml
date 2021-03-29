@@ -15,10 +15,11 @@ jobs:
         with:
           htmlFile: 'index.html'
           outputFile: 'resume.pdf'
+          pdfOptions: '{"format": "A4", "printBackground": "true"}'
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: resume
+          name: 'Resume file'
           path: 'resume.pdf'
   release:
     name: Release
