@@ -15,6 +15,11 @@ jobs:
         with:
           htmlFile: 'index.html'
           outputFile: 'resume.pdf'
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: resume
+          path: 'resume.pdf'
   release:
     name: Release
     runs-on: ubuntu-latest
