@@ -22,6 +22,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-block;
+  user-select: none;
 }
 
 html {
@@ -36,23 +37,6 @@ body {
   background: var(--bg-color);
 }
 
-body:before {
-  position: fixed;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom right,
-    transparent,
-    var(--accent-color),
-    var(--main-color)
-  );
-  clip-path: circle(20rem at 90% bottom);
-  z-index: -1;
-}
-
 article dl > div {
   display: flex;
 }
@@ -65,7 +49,7 @@ article dl dt {
 article .card {
   position: relative;
   border: 0.25rem solid var(--main-color);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   transition: 0.5s;
   -webkit-backdrop-filter: var(--blur);
@@ -73,12 +57,12 @@ article .card {
   backdrop-filter: var(--blur);
 }
 
-article .card > h3 {
+article .card > h2 {
   font-size: small;
   margin-bottom: 0.5rem;
 }
 
-article .card > h3 > span:last-child {
+article .card > h2 > span:last-child {
   position: absolute;
   top: 0;
   right: 1rem;
@@ -111,45 +95,14 @@ article .card-detail > div:first-child {
   margin-bottom: 2rem;
   font-size: 6rem;
   line-height: 5rem;
-  height: 100%;
-  width: fit-content;
   font-weight: bold;
-  color: var(--accent-color);
-  animation: name 6s ease infinite;
-  background: var(--gradient);
-  background-size: 200% 200%;
-  text-shadow: none;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@keyframes name {
-  0% {
-    background-position: 0% 0%;
-  }
-
-  25% {
-    background-position: 0% 100%;
-  }
-
-  50% {
-    background-position: 50% 100%;
-  }
-
-  75% {
-    background-position: 50% 0%;
-  }
-
-  100% {
-    background-position: 0% 0%;
-  }
+  color: var(--main-color);
 }
 
 #profile > h1::before {
   content: "Hey, I am";
   font-size: small;
-  color: unset;
+  color: var(--subtle-color);
   display: block;
   line-height: normal;
 }
@@ -209,18 +162,9 @@ article .card-detail > div:first-child {
 
 .info > article {
   position: relative;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--bg-color);
   border-radius: 0.5rem;
   box-shadow: 0.25rem 0.25rem 1rem 0 rgba(0, 0, 0, 0.15);
-  -webkit-backdrop-filter: var(--blur);
-  -moz-backdrop-filter: var(--blur);
-  backdrop-filter: var(--blur);
-  transition: 0.4s;
-  will-change: auto;
-}
-
-.info > article:hover {
-  background: var(--bg-color);
 }
 
 .info > article::before {
@@ -262,6 +206,23 @@ article .card-detail > div:first-child {
 }
 
 @media screen and (min-width: 1024px) {
+  body:before {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom right,
+      transparent,
+      var(--accent-color),
+      var(--main-color)
+    );
+    clip-path: circle(20rem at 90% bottom);
+    z-index: -1;
+  }
+
   body:after {
     position: fixed;
     content: "";
@@ -274,8 +235,32 @@ article .card-detail > div:first-child {
       var(--accent-color),
       var(--main-color)
     );
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     clip-path: circle(8rem at 9rem 9rem);
     z-index: -1;
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    25% {
+      background-position: 0% 100%;
+    }
+
+    50% {
+      background-position: 50% 100%;
+    }
+
+    75% {
+      background-position: 100% 0%;
+    }
+
+    100% {
+      background-position: 0% 0%;
+    }
   }
 
   main {
@@ -305,6 +290,19 @@ article .card-detail > div:first-child {
 
   #contact a > span {
     display: none;
+  }
+
+  .info > article {
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: var(--blur);
+    -moz-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    transition: 0.4s;
+    will-change: auto;
+  }
+
+  .info > article:hover {
+    background: var(--bg-color);
   }
 }
 
