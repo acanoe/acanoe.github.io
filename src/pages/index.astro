@@ -1,0 +1,20 @@
+---
+import MainLayout from '../layouts/Main.astro'
+import Header from '../components/astro/Header.astro'
+
+import data from '../data.json'
+---
+
+<MainLayout title={data.name + " - Portfolio"}>
+    <Header name={data.name} description={data.description} links={data.links} />
+    <main>
+        <p>Hello!</p>
+    </main>
+</MainLayout>
+
+<style>
+    main {
+        margin-left: 25%;
+        padding: 2rem;
+    }
+</style>
