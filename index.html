@@ -181,7 +181,7 @@
           },
           getProjects(username) {
             if (username) {
-              fetch(`https://api.github.com/users/${username}/repos`)
+              fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
                 .then((response) => response.json())
                 .then((json) => (this.projects = json));
             }
