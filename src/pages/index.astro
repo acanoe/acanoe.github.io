@@ -5,7 +5,7 @@ import Header from '../components/astro/Header.astro'
 import data from '../data.json'
 ---
 
-<MainLayout title={data.name + " - Portfolio"}>
+<MainLayout title={data.name + " - Portfolio" }>
     <Header name={data.name} description={data.description} links={data.links} />
     <main>
         <p>Hello!</p>
@@ -14,7 +14,12 @@ import data from '../data.json'
 
 <style>
     main {
-        margin-left: 25%;
-        padding: 2rem;
+        padding: 1.6rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        main {
+            margin-left: 25%;
+        }
     }
 </style>
