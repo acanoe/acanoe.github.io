@@ -7,11 +7,19 @@
 }
 
 :root {
-  --hue: 180;
-  --saturation: 88%;
-  --lightness: 38%;
+  --main-h: 180;
+  --main-s: 88%;
+  --main-l: 38%;
 
-  --main-color: hsl(var(--hue), var(--saturation), var(--lightness));
+  --accent-h: 24;
+  --accent-s: 100%;
+  --accent-l: 53%;
+
+  --main-color: hsl(var(--main-h), var(--main-s), var(--main-l));
+  --main-color-dark: hsl(var(--main-h), 100%, 25%);
+  
+  --accent-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+
 }
 
 html {
@@ -26,6 +34,12 @@ body {
   max-width: 1280px;
   background: #fff;
   color: hsl(var(--hue), var(--saturation), 0%);
+}
+
+svg {
+  position: relative;
+  top: 0.125rem;
+  fill: currentColor;
 }
 
 @media (prefers-color-scheme: dark) {

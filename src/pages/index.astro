@@ -1,25 +1,9 @@
 ---
 import MainLayout from '../layouts/Main.astro'
-import Header from '../components/astro/Header.astro'
 
 import data from '../data.json'
 ---
 
-<MainLayout title={data.name + " - Portfolio" }>
-    <Header name={data.name} description={data.description} links={data.links} />
-    <main>
-        <p>Hello!</p>
-    </main>
+<MainLayout title={data.name + " - Portfolio" } currentPage="home">
+    <p>Hello!</p>
 </MainLayout>
-
-<style>
-    main {
-        padding: 1.6rem;
-    }
-
-    @media screen and (min-width: 1024px) {
-        main {
-            margin-left: 25%;
-        }
-    }
-</style>

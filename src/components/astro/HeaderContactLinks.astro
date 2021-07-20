@@ -1,0 +1,98 @@
+---
+import data from '../../data.json'
+---
+
+<div id="contact">
+    <ul>
+        <li>
+            <a id="linkedin" style="--color: #0077b5" href={'https://linkedin.com/in/' + data.links.linkedin}>
+                <svg class="svg-icon" aria-hidden="true" focusable="false">
+                    <use xlink:href="#icon-linkedin" />
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+        </li>
+        <li>
+            <a id="github" style="--color: #181717" href={'https://github.com/' + data.links.github}>
+                <svg class="svg-icon" aria-hidden="true" focusable="false">
+                    <use xlink:href="#icon-github" />
+                </svg>
+                <span>GitHub</span>
+            </a>
+        </li>
+        <li>
+            <a id="email" style="--color: #d14836" href={'mailto:' + data.links.email}>
+                <svg class="svg-icon" aria-hidden="true" focusable="false">
+                    <use xlink:href="#icon-email" />
+                </svg>
+                <span>Email</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<style>
+    div {
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    div ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 1px solid var(--main-color);
+    }
+
+    div ul>*+* {
+        border-left: 1px solid var(--main-color);
+    }
+
+    div li {
+        flex: 1;
+    }
+
+    div a {
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1.1rem;
+        color: var(--main-color-dark);
+        transition: 0.4s ease-in-out;
+        will-change: transform;
+        padding: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div a>span {
+        margin-left: .25rem;
+    }
+
+    div a:hover {
+        -webkit-transform: scale3d(1.2, 1.2, 1.2);
+        -moz-transform: scale3d(1.2, 1.2, 1.2);
+        transform: scale3d(1.2, 1.2, 1.2);
+        color: var(--color);
+    }
+
+    div .svg-icon {
+        flex-shrink: 0;
+        height: 1.1rem;
+        width: 1.1rem;
+        transition: fill 0.3s;
+    }
+
+    @media screen and (min-width: 1024px) {
+        div a>svg {
+            top: 0 !important;
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+        }
+
+        div a>span {
+            display: none;
+        }
+    }
+</style>

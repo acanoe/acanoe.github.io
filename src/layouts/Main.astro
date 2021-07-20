@@ -1,20 +1,40 @@
 ---
 import SvgSymbols from '../components/astro/SvgSymbols.astro'
+import Header from '../components/astro/Header.astro'
 
-const {title} = Astro.props
+import data from '../data.json'
+
+const {currentPage} = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
+    <title>{data.name + ' | ' + currentPage.replace(/^\w/, c => c.toUpperCase())}</title>
     <link rel="stylesheet" href="/style/global.css">
+    <style>
+        main {
+            padding: 1.6rem;
+        }
+
+        @media screen and (min-width: 1024px) {
+            main {
+                margin-left: 25%;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <SvgSymbols />
-    <slot />
+    <Header currentPage={currentPage} />
+    <main>
+        <slot />
+    </main>
 </body>
+
 </html>
