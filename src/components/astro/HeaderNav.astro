@@ -1,10 +1,10 @@
-<script>
-    export let currentPage;
-</script>
+---
+const {currentPage} = Astro.props;
+---
 
 <nav>
     <ul>
-        <li class:active={currentPage == "home"}>
+        <li class={currentPage=="home" && 'active' }>
             <a href="/">
                 <span>Home</span>
                 <svg aria-hidden="true" focusable="false">
@@ -12,7 +12,7 @@
                 </svg>
             </a>
         </li>
-        <li class:active={currentPage == "resume"}>
+        <li class={currentPage=="resume" && 'active' }>
             <a href="/resume">
                 <span>Resume</span>
                 <svg aria-hidden="true" focusable="false">
@@ -20,7 +20,7 @@
                 </svg>
             </a>
         </li>
-        <li class:active={currentPage == "blog"}>
+        <li class={currentPage=="blog" && 'active' }>
             <a href="/blog">
                 <span>Blog</span>
                 <svg aria-hidden="true" focusable="false">
@@ -28,7 +28,7 @@
                 </svg>
             </a>
         </li>
-        <li class:active={currentPage == "experiments"}>
+        <li class={currentPage=="experiments" && 'active' }>
             <a href="/experiments">
                 <span>Experiments</span>
                 <svg aria-hidden="true" focusable="false">
@@ -40,11 +40,15 @@
 </nav>
 
 <style>
+    nav {
+        margin-top: 1rem;
+
+    }
     nav ul {
         list-style: none;
         display: flex;
-        flex-direction: column;
-
+        align-items: center;
+        overflow: auto;
     }
 
     li {
@@ -52,7 +56,7 @@
         border-radius: 1rem;
     }
 
-    .active {
+    li.active {
         background: hsla(var(--accent-h), var(--accent-s), 90%);
     }
 
@@ -66,7 +70,23 @@
     }
 
     a svg {
-        height: 1.1rem;
-        width: 1.1rem;
+        display: none;
+    }
+
+
+    @media screen and (min-width: 1024px) {
+        nav {
+            margin-top: 0;
+        }
+        nav ul {
+            flex-direction: column;
+            align-items: unset;
+        }
+
+        a svg {
+            display: block;
+            height: 1.1rem;
+            width: 1.1rem;
+        }
     }
 </style>

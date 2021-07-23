@@ -1,5 +1,5 @@
 ---
-import HeaderNav from '../svelte/HeaderNav.svelte'
+import HeaderNav from './HeaderNav.astro'
 import HeaderContactLinks from './HeaderContactLinks.astro'
 import data from '../../data.json'
 
@@ -8,7 +8,7 @@ const {currentPage} = Astro.props
 
 <header>
     <h1>{data.name}</h1>
-    <HeaderNav currentPage={currentPage} client:load />
+    <HeaderNav currentPage={currentPage} />
     { currentPage !== "home" &&
     <HeaderContactLinks /> }
 </header>
@@ -46,7 +46,7 @@ const {currentPage} = Astro.props
             align-items: stretch;
             justify-content: space-between;
             border-bottom: unset;
-            overflow: auto;
+            /* overflow: auto; */
         }
     }
 </style>
