@@ -1,9 +1,62 @@
 ---
 import MainLayout from '../layouts/Main.astro'
+import HeaderContactLinks from '../components/astro/HeaderContactLinks.astro'
 
 import data from '../data.json'
 ---
 
 <MainLayout title={data.name + " - Portfolio" } currentPage="home">
-    <p>Hello!</p>
+    <article id="openforwork">
+        <div>
+            <h2>I am open for work!</h2>
+            <HeaderContactLinks />
+        </div>
+        <p>My resume can be acquired <a href="">here</a></p>
+    </article>
+    <article id="projects">
+        <h2>Latest projects</h2>
+        <ul>
+            <li>
+                <h3>NONO</h3>
+                <p>lklklklk</p>
+            </li>
+            <li>
+                <h3>OIOIOIOI</h3>
+                <p>pppppp</p>
+            </li>
+            <li>
+                <h3>JIJIJI</h3>
+                <p>aslnalksnd</p>
+            </li>
+        </ul>
+    </article>
 </MainLayout>
+
+<style>
+    #openforwork {
+        background: hsl(var(--main-h), 40%, 97%);
+    }
+
+    #openforwork div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #projects {
+        margin-top: 1rem;
+        border: 1px solid var(--main-color-dark);
+    }
+    ul {
+        padding-top: 1rem;
+        list-style: none;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    ul li {
+        border-radius: 1em;
+        padding: 1em;
+        background: hsl(var(--main-h), 40%, 97%);
+    }
+</style>

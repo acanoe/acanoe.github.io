@@ -36,6 +36,26 @@ body {
   color: hsl(var(--hue), var(--saturation), 0%);
 }
 
+h1,h2,h3,h4,h5,h6 {
+  color: var(--main-color-dark);
+  margin-bottom: 1.5rem;
+}
+
+article {
+  padding: 1em;
+  border-radius: 1em;
+}
+
+article a {
+  color: var(--main-color-dark);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+article a:hover {
+  text-decoration: underline;
+}
+
 svg {
   position: relative;
   fill: currentColor;
