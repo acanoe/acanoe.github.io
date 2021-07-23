@@ -1,20 +1,34 @@
 ---
 import MainLayout from '../layouts/Main.astro'
-import HeaderContactLinks from '../components/astro/HeaderContactLinks.astro'
+import ContactLinks from '../components/astro/ContactLinks.astro'
 
 import data from '../data.json'
+
+const response = await fetch(`https://api.github.com/users/${data.links.github}/repos?sort=updated`)
+const repos = await response.json()
 ---
 
 <MainLayout title={data.name + " - Portfolio" } currentPage="home">
-    <article id="openforwork">
+    <article id="openforwork" class="important">
         <div>
-            <h2>I am open for work!</h2>
-            <HeaderContactLinks />
+            <h3>I am open for work!</h3>
+            <p>My resume can be acquired <a href="">here</a></p>
         </div>
-        <p>My resume can be acquired <a href="">here</a></p>
+        <ContactLinks />
     </article>
-    <article id="projects">
-        <h2>Latest projects</h2>
+    <article id="latestprojects">
+        <h3>Latest projects</h3>
+        <ul>
+            {repos.map((item) => (
+            <li>
+                <h4>{item.name}</h4>
+                <p>{item.description}</p>
+            </li>
+            ))}
+        </ul>
+    </article>
+    <article id="latestblog">
+        <h3>Latest blog post</h3>
         <ul>
             <li>
                 <h3>NONO</h3>
@@ -34,19 +48,12 @@ import data from '../data.json'
 
 <style>
     #openforwork {
-        background: hsl(var(--main-h), 40%, 97%);
-    }
-
-    #openforwork div {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
     }
 
-    #projects {
-        margin-top: 1rem;
-        border: 1px solid var(--main-color-dark);
-    }
     ul {
         padding-top: 1rem;
         list-style: none;
@@ -54,9 +61,10 @@ import data from '../data.json'
         grid-gap: 1rem;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+
     ul li {
         border-radius: 1em;
         padding: 1em;
-        background: hsl(var(--main-h), 40%, 97%);
+        background: hsl(var(--main-h), 40%, 93%);
     }
 </style>

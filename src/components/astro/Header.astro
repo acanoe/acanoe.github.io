@@ -1,6 +1,6 @@
 ---
 import HeaderNav from './HeaderNav.astro'
-import HeaderContactLinks from './HeaderContactLinks.astro'
+import ContactLinks from './ContactLinks.astro'
 import data from '../../data.json'
 
 const {currentPage} = Astro.props
@@ -10,7 +10,7 @@ const {currentPage} = Astro.props
     <h1>{data.name}</h1>
     <HeaderNav currentPage={currentPage} />
     { currentPage !== "home" &&
-    <HeaderContactLinks /> }
+    <ContactLinks /> }
 </header>
 
 <style>

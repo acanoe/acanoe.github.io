@@ -41,9 +41,19 @@ h1,h2,h3,h4,h5,h6 {
   margin-bottom: 1.5rem;
 }
 
+p {
+  margin-bottom: 1rem;
+}
+
 article {
   padding: 1em;
+  margin-bottom: 2rem;
+  background: hsl(var(--main-h), 40%, 97%);
   border-radius: 1em;
+}
+
+article.important {
+  border: 1px solid var(--main-color-dark);
 }
 
 article a {

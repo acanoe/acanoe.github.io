@@ -12,9 +12,9 @@ const {currentPage} = Astro.props;
                 </svg>
             </a>
         </li>
-        <li class={currentPage=="resume" && 'active' }>
-            <a href="/resume">
-                <span>Resume</span>
+        <li class={currentPage=="projects" && 'active' }>
+            <a href="/projects">
+                <span>Projects</span>
                 <svg aria-hidden="true" focusable="false">
                     <use xlink:href="#icon-chevron-right" />
                 </svg>
@@ -44,6 +44,7 @@ const {currentPage} = Astro.props;
         margin-top: 1rem;
 
     }
+
     nav ul {
         list-style: none;
         display: flex;
@@ -51,22 +52,22 @@ const {currentPage} = Astro.props;
         overflow: auto;
     }
 
-    li {
-        padding: 0 .5em;
-        border-radius: 1em;
-    }
-
-    li.active {
-        background: hsla(var(--main-h), 40%, 90%);
-    }
-
     a {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 1rem 0;
         text-decoration: none;
+        padding: 1em .5em;
         color: var(--main-color-dark);
+        border-radius: 1em;
+    }
+
+    li.active a {
+        background: hsla(var(--main-h), 40%, 90%);
+    }
+
+    a:hover {
+        background: hsla(var(--main-h), 40%, 93%);
     }
 
     a svg {
@@ -78,6 +79,7 @@ const {currentPage} = Astro.props;
         nav {
             margin-top: 0;
         }
+
         nav ul {
             flex-direction: column;
             align-items: unset;
