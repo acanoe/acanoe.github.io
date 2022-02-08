@@ -58,7 +58,7 @@
         {
             "place": "Lora Technologies",
             "role": "Junior Backend Developer, Testing engineer, 2021",
-            "detail": "As the Testing Engineer, I focus on making sure the backend code is working as intended. I also help in building and maintaining APIs needed in the system, while at the same time keeping the stack in check."
+            "details": "As the Testing Engineer, I focus on making sure the backend code is working as intended. I also help in building and maintaining APIs needed in the system, while at the same time keeping the stack in check."
         }
     ]
 }
