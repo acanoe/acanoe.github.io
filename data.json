@@ -54,6 +54,11 @@
             "place": "HAIPY",
             "role": "Mobile app developer, 2018 - 2020",
             "details": "I joined the project with my friend in 2018 as a mobile app developer. I get the opportunity to learn and grow by creating the app for the service using Dart's Flutter framework. Dart and Flutter are Google's open source projects to build multi-platform apps."
+        },
+        {
+            "place": "Lora Technologies",
+            "role": "Junior Backend Developer, Testing engineer, 2021",
+            "detail": "As the Testing Engineer, I focus on making sure the backend code is working as intended. I also help in building and maintaining APIs needed in the system, while at the same time keeping the stack in check."
         }
     ]
 }
