@@ -20,13 +20,18 @@ jobs:
         with:
           name: 'Resume file'
           path: 'resume.pdf'
-#   release:
-#     name: Release
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Release
-#         uses: fnkr/github-action-ghr@v1
-#         if: startsWith(github.ref, 'refs/tags/')
-#         env:
-#           GHR_PATH: resume.pdf
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release
+        id: create_release
+        uses: zendesk/action-create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: 'resume.pdf'
+          asset_name: 'Resume.pdf'
+          asset_content_type: application/pdf
