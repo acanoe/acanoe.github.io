@@ -39,6 +39,9 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
 }
+img#background {
+  display: none;
+}
 
 article dl > div {
   display: flex;
@@ -258,6 +261,7 @@ article .card-detail > div:first-child {
   }
 
   img#background {
+    display: block;
     position: fixed;
     top: 0;
     right: 0;
@@ -281,7 +285,7 @@ article .card-detail > div:first-child {
     background-size: 200% 200%;
     animation: fadeIn 4s cubic-bezier(0.075, 0.82, 0.165, 1),
       gradientAnimation 15s ease infinite;
-    clip-path: circle(27rem at 1rem 1rem);
+    clip-path: circle(15vw at 1rem 1rem);
     transform-origin: left top;
     z-index: -1;
   }
