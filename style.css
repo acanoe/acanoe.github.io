@@ -5,6 +5,7 @@
   --accent-color: rgb(74, 202, 238);
   --subtle-color: #666366;
   --bg-color: #ffffff;
+  --text-color: #000000;
   --gradient: linear-gradient(
     135deg,
     var(--main-color),
@@ -14,6 +15,7 @@
     var(--accent-color)
   );
   --blur: blur(2.5rem);
+  --noblur: blur(0);
 }
 
 *,
@@ -35,6 +37,7 @@ body {
   font-size: var(--font-size);
   line-height: var(--line-height);
   background: var(--bg-color);
+  color: var(--text-color);
 }
 
 article dl > div {
@@ -205,42 +208,11 @@ article .card-detail > div:first-child {
   color: var(--bg-color);
 }
 
+#experience .details {
+  grid-template-columns: 1fr;
+}
+
 @media screen and (min-width: 1024px) {
-  body:before {
-    position: fixed;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom right,
-      transparent,
-      var(--accent-color),
-      var(--main-color)
-    );
-    clip-path: circle(20rem at 90% bottom);
-    z-index: -1;
-  }
-
-  body:after {
-    position: fixed;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to top right,
-      var(--accent-color),
-      var(--main-color)
-    );
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    clip-path: circle(8rem at 9rem 9rem);
-    z-index: -1;
-  }
-
   @keyframes gradientAnimation {
     0% {
       background-position: 0% 0%;
@@ -263,6 +235,57 @@ article .card-detail > div:first-child {
     }
   }
 
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale3d(0, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  img#background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  body:before {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom right,
+      var(--accent-color),
+      var(--main-color)
+    );
+    background-size: 200% 200%;
+    animation: fadeIn 4s cubic-bezier(0.075, 0.82, 0.165, 1),
+      gradientAnimation 15s ease infinite;
+    clip-path: circle(27rem at 1rem 1rem);
+    transform-origin: left top;
+    z-index: -1;
+  }
+
   main {
     max-width: 1024px;
     margin: auto;
@@ -278,8 +301,36 @@ article .card-detail > div:first-child {
     grid-template-rows: 4fr 1fr;
   }
 
+  #profile > h1 {
+    color: transparent;
+    background: linear-gradient(
+      to bottom right,
+      var(--accent-color),
+      var(--main-color)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 100% 200%;
+    animation: gradientAnimation 15s ease-in-out infinite;
+  }
+
+  .intro #profile h1 {
+    opacity: 0;
+    animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0s forwards;
+  }
+
+  .intro #profile p {
+    opacity: 0;
+    animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.25s forwards;
+  }
+
   .intro #contact {
     margin: auto 0;
+  }
+
+  .intro #contact a {
+    opacity: 0;
+    animation: slideUp 2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
   }
 
   #contact a > svg {
@@ -292,7 +343,13 @@ article .card-detail > div:first-child {
     display: none;
   }
 
+  .info {
+    margin-top: 25vh;
+  }
+
   .info > article {
+    opacity: 0;
+    animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
     background: rgba(255, 255, 255, 0.15);
     -webkit-backdrop-filter: var(--blur);
     -moz-backdrop-filter: var(--blur);

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Resume</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
@@ -29,6 +30,12 @@
         />
       </symbol>
     </svg>
+    <img
+      src="background.png"
+      loading="lazy"
+      id="background"
+      alt="background image"
+    />
     <div x-data="resume()" x-init="init" x-cloak>
       <template x-if="data">
         <main>
@@ -41,7 +48,7 @@
               <div id="contact">
                 <a
                   id="linkedin"
-                  style="--color: #0077b5"
+                  style="--color: #0077b5; --index: 1"
                   x-bind:href="'https://linkedin.com/in/' + data.contact.linkedin"
                 >
                   <svg class="svg-icon" aria-hidden="true" focusable="false">
@@ -51,7 +58,7 @@
                 </a>
                 <a
                   id="github"
-                  style="--color: #181717"
+                  style="--color: #181717; --index: 2"
                   x-bind:href="'https://github.com/' + data.contact.github"
                 >
                   <svg class="svg-icon" aria-hidden="true" focusable="false">
@@ -61,7 +68,7 @@
                 </a>
                 <a
                   id="email"
-                  style="--color: #d14836"
+                  style="--color: #d14836; --index: 3"
                   x-bind:href="'mailto:' + data.contact.email"
                 >
                   <svg class="svg-icon" aria-hidden="true" focusable="false">
@@ -114,6 +121,20 @@
                 </template>
               </div>
             </article>
+            <article id="experience">
+              <div class="details">
+                <template x-for="exp in data.experience">
+                  <div class="card">
+                    <h2 x-text="exp.place"></h2>
+                    <div
+                      x-text="exp.role"
+                      style="color: var(--main-color)"
+                    ></div>
+                    <p x-text="exp.details"></p>
+                  </div>
+                </template>
+              </div>
+            </article>
             <template x-if="projects.length > 0">
               <article id="projects">
                 <div class="details">
@@ -129,20 +150,6 @@
                 </div>
               </article>
             </template>
-            <article id="experience">
-              <div class="details">
-                <template x-for="exp in data.experience">
-                  <div class="card">
-                    <h2 x-text="exp.place"></h2>
-                    <div
-                      x-text="exp.role"
-                      style="color: var(--main-color)"
-                    ></div>
-                    <p x-text="exp.details"></p>
-                  </div>
-                </template>
-              </div>
-            </article>
             <article id="education">
               <div class="details">
                 <template x-for="edu in data.education">
@@ -166,11 +173,17 @@
     </div>
 
     <script>
+      const root = document.documentElement;
+      const img = document.querySelector("img");
+
       function resume() {
         return {
           data: undefined,
           projects: [],
           init() {
+            colorjs
+              .prominent(img, { amount: 10, format: "hex" })
+              .then((palette) => this.setColors(palette));
             fetch(`./data.json`)
               .then((response) => response.json())
               .then((json) => {
@@ -179,9 +192,16 @@
                 document.title = json.name + " - Resume";
               });
           },
+          setColors(palette) {
+            root.style.setProperty("--main-color", palette[2]);
+            root.style.setProperty("--text-color", palette[4]);
+            root.style.setProperty("--accent-color", palette[8]);
+          },
           getProjects(username) {
             if (username) {
-              fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
+              fetch(
+                `https://api.github.com/users/${username}/repos?sort=updated`
+              )
                 .then((response) => response.json())
                 .then((json) => (this.projects = json));
             }
